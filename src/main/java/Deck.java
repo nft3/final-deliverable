@@ -9,6 +9,7 @@ import java.util.Collections;
 public class Deck {
 
     private List<Card> deck;
+    private int cardToTakeOff;
 
     // When a Deck object in instantiated, let's make a new deck
     public Deck(){
@@ -17,6 +18,7 @@ public class Deck {
         createCardsForSuit(Suit.CLUB);
         createCardsForSuit(Suit.DIAMOND);
         createCardsForSuit(Suit.SPADE);
+        cardToTakeOff = 0;
     }
 
     private void createCardsForSuit(Suit s){
@@ -39,9 +41,10 @@ public class Deck {
         Card tempCard;
 
         // Get the card from the top of the deck, then remove it.
-        tempCard = deck.get(0);
-        deck.remove(0);
+        tempCard = deck.get(cardToTakeOff);
+        deck.remove(cardToTakeOff);
 
+        cardToTakeOff = cardToTakeOff + 1;
         return tempCard;
     }
 

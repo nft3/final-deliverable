@@ -35,6 +35,14 @@ public class Dealer implements Player {
         return dealerHand.getSum();
     }
 
+    public void clearHand(){
+        dealerHand.clearHand();
+    }
+
+    public boolean haveBlackjack(){
+        return dealerHand.haveBlackjack();
+    }
+
     public void shuffleCards(){
         deck.shuffleDeck();
     }
@@ -47,6 +55,9 @@ public class Dealer implements Player {
         dealerHand.displayInitialHand();
     }
 
+    public boolean didBust(){
+        return dealerHand.didBust();
+    }
     /**
      * METHODS TO HELP WITH TESTING!
      */

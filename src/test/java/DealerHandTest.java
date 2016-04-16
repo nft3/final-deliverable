@@ -96,8 +96,6 @@ public class DealerHandTest {
         Card c2 = new Card(9, Suit.CLUB);
         DealerHand hand = new DealerHand(c1, c2);
 
-        hand.addCard(new Card(5, Suit.HEART));
-
         // Set up output arrays
         final ByteArrayOutputStream stdout = new ByteArrayOutputStream();
         System.setOut(new PrintStream(stdout));

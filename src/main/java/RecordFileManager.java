@@ -47,7 +47,7 @@ public class RecordFileManager {
                     in.close();
 
                     // return the amount in the account
-                    return localAccountMoney;
+                    return numberFormat(localAccountMoney);
                 }
             }
 
@@ -104,7 +104,7 @@ public class RecordFileManager {
         if (!doesUserExist(userName) && validUserName(userName) && validPassword(password) && validDeposit(deposit)) {
 
             // Format the String correctly
-            String outString = userName + " " + password + " " + Double.toString(deposit);
+            String outString = userName + " " + password + " " + Double.toString(numberFormat(deposit));
             BufferedWriter bw;
             try {
                 bw = new BufferedWriter(new FileWriter(file, true));
@@ -148,7 +148,7 @@ public class RecordFileManager {
                 double localAccountMoney = Double.parseDouble(fileLine[2]);
 
                 if(localUserName.equals(userName) && validUserName(userName)){
-                    currentLine = localUserName + " " + localUserPassword + " " + deposit;
+                    currentLine = localUserName + " " + localUserPassword + " " + numberFormat(deposit);
                     returnValue = true;
                 }
 
@@ -185,6 +185,10 @@ public class RecordFileManager {
 
     private boolean validDeposit(double deposit){
         return deposit > 0;
+    }
+
+    private double numberFormat(double number){
+        return Math.round(number * 100.0) / 100.0;
     }
     /**
      * METHODS THAT HELP WITH TESTING
